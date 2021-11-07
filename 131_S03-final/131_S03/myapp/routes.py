@@ -16,5 +16,13 @@ def home():
         new_city = City(name=form.city_name.data, rank=form.city_rank.data)
         db.session.add(new_city)
         db.session.commit()
-    posts = [{}]
-    return render_template('home.html', title = 'Top Cities', form = form, name = 'Phuc', posts = posts)
+    posts = City.query.all()
+
+    for x in range(len(posts)):
+        minRank = x
+        for y in range(x+1, len(posts)):
+            if posts[minRank].rank > posts[y].rank:
+                minRank = y     
+        posts[x], posts[minRank] = posts[minRank], posts[x]
+
+    return render_template('home.html', title = 'Top Cities', form = form, name = 'Phuc', top_cities = posts)

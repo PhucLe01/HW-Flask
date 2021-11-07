@@ -11,6 +11,10 @@
     <body><b>
         <h1>Welcome {{ name }}, here are the top destinations!</h1>
         <a href="https://www.google.com">goooogle</a>
-        </b>
+        <ul>
+            {% for c in top_cities %}
+                <li>{{ c.name }}</li>
+            {% endfor %}
+        </ul></b>
     </body>
 {% endblock %}
