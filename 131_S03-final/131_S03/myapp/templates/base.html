@@ -1,29 +1,20 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        {% if title %}
-            <title>{{title}}!</title>
-        {% else %}
-            <title>No Name</title>
-        {% endif %}
-    </head>
     <body>
-        <div>
-            <p>My Website:</p>
-            <a href="/">Home</a>
-            <a href="/login">Login</a>
-        </div>
-        {% with messages = get_flashed_messages() %}
-        {% if messages %}
-        <ul>
-            {% for m in messages %}
-            <li>{{ m }}</li>
-            {% endfor %}
-        </ul>
-        {% endif %}
-        {% endwith %}
+        {% block content %}
+        {% endblock %}
+        <form method="POST" novalidate>
+            {{ form.hidden_tag() }}
 
-    {% block content %}
-    {% endblock %}
+            <p><b> {{ form.city_name.label }}
+            {{ form.city_name(size=32) }}</b></p>
+
+            <p><b> {{ form.city_rank.label }}
+            {{ form.city_rank(size=32) }}</b></p>
+            
+            <p><b> Visited {{ form.is_visited() }}</b></p>
+
+            <p><b>{{ form.submit() }}</b></p>
+        </form>
     </body>
 </html>

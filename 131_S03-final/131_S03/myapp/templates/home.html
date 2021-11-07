@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <head><b>
+        {% if title %}
+            <title>{{ title }}!</title>
+        {% else %}
+            <title>Home</title>
+        {% endif %}</b>
+    </head>
+    <body><b>
+        <h1>Welcome {{ name }}, here are the top destinations!</h1>
+        <a href="https://www.google.com">goooogle</a>
+        </b>
+    </body>
+{% endblock %}
