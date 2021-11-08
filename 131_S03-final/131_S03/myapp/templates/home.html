@@ -1,7 +1,8 @@
 {% extends "base.html" %}
 
 {% block content %}
-    <head><b>
+    <head>
+        <b>
         {% if title %}
             <title>{{ title }}!</title>
         {% else %}
@@ -10,6 +11,15 @@
     </head>
     <body><b>
         <h1>Welcome {{ name }}, here are the top destinations!</h1>
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+        <ul>
+            {% for message in messages %}
+                <li style='color:green'>{{ message }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+        {% endwith %}
         <a href="https://www.google.com">goooogle</a>
         <ul>
             {% for c in top_cities %}

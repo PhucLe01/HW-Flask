@@ -16,9 +16,10 @@ def home():
         new_city = City(name=form.city_name.data, rank=form.city_rank.data)
         db.session.add(new_city)
         db.session.commit()
+        flash(f'{form.city_name.data} has been added')
     posts = City.query.all()
 
-    for x in range(len(posts)):
+    for x in range(len(posts)): #sorting algorithm from GeeksforGeeks
         minRank = x
         for y in range(x+1, len(posts)):
             if posts[minRank].rank > posts[y].rank:
